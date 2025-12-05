@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-/* ---- helpers ---- */
+/* helpers */
 function rand_hex($bytes = 16) {
     if (function_exists('random_bytes')) return bin2hex(random_bytes($bytes));
     if (function_exists('openssl_random_pseudo_bytes')) return bin2hex(openssl_random_pseudo_bytes($bytes));
@@ -12,7 +12,7 @@ function rand_hex($bytes = 16) {
 function h($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function gv($arr,$k,$d=''){ return isset($arr[$k]) ? $arr[$k] : $d; }
 
-/* ---- DB (SQLite) ---- */
+/* DB (SQLite) */
 $dbFile = __DIR__ . '/data.sqlite';
 try {
     $pdo = new PDO('sqlite:'.$dbFile);
@@ -22,7 +22,7 @@ try {
     exit;
 }
 
-/* Ensure users table exists (fields: first,last,gender,dob,email,password) */
+/* Ensure users table exists */
 $pdo->exec("CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   email TEXT UNIQUE,
@@ -42,7 +42,7 @@ $action = gv($_GET,'action','signup'); // default to signup page
 $errors = [];
 $info = '';
 
-/* ---------------- SIGNUP ---------------- */
+/* SIGNUP */
 if ($action === 'signup' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!hash_equals($_SESSION['csrf'], gv($_POST,'csrf',''))) $errors[] = 'Invalid request.';
     $first = trim(gv($_POST,'first_name',''));
@@ -74,7 +74,7 @@ if ($action === 'signup' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-/* ---------------- LOGIN ---------------- */
+/* LOGIN */
 if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!hash_equals($_SESSION['csrf'], gv($_POST,'csrf',''))) $errors[] = 'Invalid request.';
     $email = trim(gv($_POST,'email',''));
@@ -99,7 +99,7 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-/* ---------------- LOGOUT ---------------- */
+/* LOGOUT */
 if ($action === 'logout') {
     session_unset();
     session_destroy();
@@ -109,7 +109,7 @@ if ($action === 'logout') {
     exit;
 }
 
-/* ---------- HTML output ---------- */
+/* HTML output */
 ?><!doctype html>
 <html lang="en">
 <head>
