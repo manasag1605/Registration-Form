@@ -18,7 +18,7 @@ A simple user registration system built with PHP, SQLite and HTML/CSS. It allows
 ```text
 PHP for backend logic
 HTML & CSS for frontend form UI
-SQLite for database
+SQLite for database     
 ```
 
 ## Project Structure: 
