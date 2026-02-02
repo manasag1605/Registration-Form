@@ -29,7 +29,6 @@ SQLite for database
 ├── index.php             # Registration form & form handling
 ├── view_users.php        # Page to display registered users
 ├── data.sqlite           # SQLite database storing registrations
-├── assets/               # CSS/JS/images
 
 ```
 
@@ -43,7 +42,7 @@ SQLite for database
         C:\xampp\htdocs\Registration-Form
 
 3. Start your server
-      Start Apache (and PHP if separate)
+      Start Apache 
 
 4. Open in browser:
       http://localhost/Registration-Form/index.php
