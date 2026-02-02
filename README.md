@@ -29,7 +29,7 @@ SQLite for database
 ├── index.php             # Registration form & form handling
 ├── view_users.php        # Page to display registered users
 ├── data.sqlite           # SQLite database storing registrations
-├── assets/               # (Optional) CSS/JS/images
+├── assets/               # CSS/JS/images
 
 ```
 
